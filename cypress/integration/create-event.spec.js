@@ -4,8 +4,8 @@ describe('Create Event', () => {
     it('should create a new event', () => {
         //navigate to home page
 
-        cy.visit('http://localhost:8080');
-      //  cy.visit('/');
+       // cy.visit('http://localhost:8080');
+        cy.visit('/');
 
         // go to the "Create Event" page
        cy.get('a[href="/create-event"]').click();
@@ -22,11 +22,16 @@ describe('Create Event', () => {
 
         cy.get('textarea[name="event-notes"]').type('Don\'t miss out!');
 
-        cy.get('input[name="event-image"]').check('./assets/event-2.jpg')
+        cy.get('input[name="event-image"]').check('./assets/event-2.jpg');
         // submit the form
         
+        cy.get('button').contains('Create').click();
+      //  cy.get('#create-btn').click();
 
         //assert that a new event has been created
+        expect(cy.get('h2').should('have.text','Event Details')).to.exist;
+
+
 
     });
 });

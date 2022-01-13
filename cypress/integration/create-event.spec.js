@@ -29,9 +29,12 @@ describe('Create Event', () => {
       //  cy.get('#create-btn').click();
 
         //assert that a new event has been created
-        expect(cy.get('h2').should('have.text','Event Details')).to.exist;
 
+        //1ST WAY OF ASSERTION 
+        cy.get('h2').should('have.text','Event Details');
 
+        //2ND WAY OF ASSERTION 
+        expect(cy.get('h2').contains('Event Details')).to.exist;
 
     });
 });

@@ -1,5 +1,11 @@
 /// <reference types ="cypress"  />
 
+const $createEvent = 'a[href="/create-event"]';
+const $titleEventDetails = 'Event Details';
+const $header2 = 'h2';
+
+
+
 describe('Create Event', () => {
     it('should create a new event', () => {
         //navigate to home page
@@ -8,7 +14,7 @@ describe('Create Event', () => {
         cy.visit('/');
 
         // go to the "Create Event" page
-       cy.get('a[href="/create-event"]').click();
+       cy.get($createEvent).click();
 
         // fill-in the form
         cy.get('#event-name').type('Summer Concert');
@@ -31,10 +37,10 @@ describe('Create Event', () => {
         //assert that a new event has been created
 
         //1ST WAY OF ASSERTION 
-        cy.get('h2').should('have.text','Event Details');
+        cy.get($header2).should('have.text',$titleEventDetails);
 
         //2ND WAY OF ASSERTION 
-        expect(cy.get('h2').contains('Event Details')).to.exist;
+        expect(cy.get($header2).contains($titleEventDetails)).to.exist;
 
     });
 });
